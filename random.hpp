@@ -11,6 +11,13 @@ struct {
 	char randletter() { return char(randbool() ? randint(65, 91) : randint(97,123)); };
 	char randsymbol() { return char( randbool() ? randint(33, 48) : randbool() ? randint(58, 65) : randbool() ? randint(91, 97) : randint(123, 127) ); };
 
+	int randrange(int limit, int start = 0, int step = 1) {
+		std::vector<int> l;
+		for (int i = start; i < limit; i += step)
+			l.push_back(i);
+		return choice(l);
+	};
+
 	template <typename T>
 	T choice(std::initializer_list<T> v) {
 		std::vector<T> l = v;
@@ -42,4 +49,23 @@ T choice(std::vector<T> v) {
 	return v[s];
 };
 #endif
-
+#if defined(import_bool)
+bool randbool() { return std::rand() % 2 == 0 ? false : true; };
+#endif
+#if defined(import_randchar)
+char randchar() { return char(std::rand() % 256 - 128); };
+#endif
+#if defined(import_randletter)
+char randletter() { return char(randbool() ? randint(65, 91) : randint(97, 123)); };
+#endif
+#if defined(import_symbol)
+char randsymbol() { return char(randbool() ? randint(33, 48) : randbool() ? randint(58, 65) : randbool() ? randint(91, 97) : randint(123, 127)); };
+#endif
+#if defined(import_randrange)
+int randrange(int limit, int start = 0, int step = 1) {
+	std::vector<int> l;
+	for (int i = start; i < limit; i += step)
+		l.push_back(i);
+	return choice(l);
+};
+#endif
