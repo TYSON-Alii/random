@@ -3,7 +3,8 @@ Python random library for c++
 
 ```cpp
 #include <iostream>
-#define import_randint
+#define import_randInt
+//#define import_rand_all
 #include "random.hpp"
 
 using namespace std;
