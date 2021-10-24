@@ -2,7 +2,7 @@
 #include <vector>
 struct {
 #if !defined(Random_Capitalize)
-	int randint(int begin, int end) { return (std::rand() % (end - begin)) + begin; };
+	int randint(int begin, int end) { return (std::rand() % ((end > begin) ? (end - begin) : (begin - end))) + (end > begin) ? begin : end; };
 	int randint(int end) { return std::rand() % end; };
 	int randint() { return std::rand() % INT_MAX; };
 
@@ -11,6 +11,14 @@ struct {
 	const char randchar() { return char(std::rand() % 256 - 128); };
 	const char randletter() { return char(randbool() ? randint(65, 91) : randint(97,123)); };
 	const char randsymbol() { return char( randbool() ? randint(33, 48) : randbool() ? randint(58, 65) : randbool() ? randint(91, 97) : randint(123, 127) ); };
+
+	float randfloat() {
+		float t = 0.f;
+		for (int i = 0; i < 11; i++) {
+			t += float(rand() % 10) / pow(10, i + 1);
+		};
+		return t;
+	};
 
 	int randinrange(int limit, int start = 0, int step = 1) {
 		std::vector<int> l;
@@ -37,7 +45,7 @@ struct {
 		return v[s];
 	};
 #else
-	int randInt(int begin, int end) { return (std::rand() % (end - begin)) + begin; };
+	int randInt(int begin, int end) { return (std::rand() % ((end > begin) ? (end - begin) : (begin - end))) + (end > begin) ? begin : end; };
 	int randInt(int end) { return std::rand() % end; };
 	int randInt() { return std::rand() % INT_MAX; };
 
@@ -46,6 +54,14 @@ struct {
 	const char randChar() { return char(std::rand() % 256 - 128); };
 	const char randLetter() { return char(randBool() ? randInt(65, 91) : randInt(97, 123)); };
 	const char randSymbol() { return char(randBool() ? randInt(33, 48) : randBool() ? randInt(58, 65) : randBool() ? randInt(91, 97) : randInt(123, 127)); };
+
+	float randFloat() {
+		float t = 0.f;
+		for (int i = 0; i < 11; i++) {
+			t += float(rand() % 10) / pow(10, i+1);
+		};
+		return t;
+	};
 
 	int randInRange(int limit, int start = 0, int step = 1) {
 		std::vector<int> l;
@@ -129,6 +145,26 @@ char randLetter() { return char(randbool() ? randint(65, 91) : randint(97, 123))
 char randsymbol() { return char(randbool() ? randint(33, 48) : randbool() ? randint(58, 65) : randbool() ? randint(91, 97) : randint(123, 127)); };
 #else
 char randSymbol() { return char(randbool() ? randint(33, 48) : randbool() ? randint(58, 65) : randbool() ? randint(91, 97) : randint(123, 127)); };
+#endif
+#endif
+
+#if defined(import_symbol)
+#if !defined(Random_Capitalize)
+float randfloat() {
+	float t = 0.f;
+	for (int i = 0; i < 11; i++) {
+		t += float(rand() % 10) / pow(10, i + 1);
+	};
+	return t;
+};
+#else
+float randFloat() {
+	float t = 0.f;
+	for (int i = 0; i < 11; i++) {
+		t += float(rand() % 10) / pow(10, i + 1);
+	};
+	return t;
+};
 #endif
 #endif
 
