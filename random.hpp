@@ -1,5 +1,18 @@
 #include <stdlib.h>
 #include <vector>
+
+#if defined(import_rand_all)
+#define import_randint
+#define import_randbool
+#define import_randchar
+#define import_randletter
+#define import_randsymbol
+#define import_randfloat
+#define import_randinrange
+#define import_randrange
+#define import_randchoice
+#endif
+
 struct {
 #if !defined(Random_Capitalize)
 	int randint(int begin, int end) { return (std::rand() % ((end > begin) ? (end - begin) : (begin - end))) + (end > begin) ? begin : end; };
@@ -116,7 +129,7 @@ T choice(std::vector<T> v) {
 };
 #endif
 
-#if defined(import_bool)
+#if defined(import_randbool) or defined(import_rand_bool) or defined(import_randBool)
 #if !defined(Random_Capitalize)
 bool randbool() { return std::rand() % 2 == 0 ? false : true; };
 #else
@@ -124,7 +137,7 @@ bool randBool() { return std::rand() % 2 == 0 ? false : true; };
 #endif
 #endif
 
-#if defined(import_randchar)
+#if defined(import_randchar) or defined(import_rand_char) or defined(import_randChar)
 #if !defined(Random_Capitalize)
 char randchar() { return char(std::rand() % 256 - 128); };
 #else
@@ -132,23 +145,23 @@ char randChar() { return char(std::rand() % 256 - 128); };
 #endif
 #endif
 
-#if defined(import_randletter)
+#if defined(import_randletter) or defined(import_rand_letter) or defined(import_randLetter)
 #if !defined(Random_Capitalize)
-char randletter() { return char(randbool() ? randint(65, 91) : randint(97, 123)); };
+char randletter() { return char(random.randbool() ? random.randint(65, 91) : random.randint(97, 123)); };
 #else
-char randLetter() { return char(randbool() ? randint(65, 91) : randint(97, 123)); };
+char randLetter() { return char(random.randBool() ? random.randInt(65, 91) : random.randInt(97, 123)); };
 #endif
 #endif
 
-#if defined(import_symbol)
+#if defined(import_randsymbol) or defined(import_rand_symbol) or defined(import_randSymbol)
 #if !defined(Random_Capitalize)
-char randsymbol() { return char(randbool() ? randint(33, 48) : randbool() ? randint(58, 65) : randbool() ? randint(91, 97) : randint(123, 127)); };
+char randsymbol() { return char(random.randbool() ? random.randint(33, 48) : random.randbool() ? random.randint(58, 65) : random.randbool() ? random.randint(91, 97) : random.randint(123, 127)); };
 #else
-char randSymbol() { return char(randbool() ? randint(33, 48) : randbool() ? randint(58, 65) : randbool() ? randint(91, 97) : randint(123, 127)); };
+char randSymbol() { return char(random.randBool() ? random.randInt(33, 48) : random.randBool() ? random.randInt(58, 65) : random.randBool() ? random.randInt(91, 97) : random.randInt(123, 127)); };
 #endif
 #endif
 
-#if defined(import_symbol)
+#if defined(import_randfloat) or defined(import_rand_float) or defined(import_randFloat)
 #if !defined(Random_Capitalize)
 float randfloat() {
 	float t = 0.f;
@@ -168,37 +181,37 @@ float randFloat() {
 #endif
 #endif
 
-#if defined(import_randinrange)
+#if defined(import_randinrange) or defined(import_rand_in_range) or defined(import_randInRange)
 #if !defined(Random_Capitalize)
 int randinrange(int limit, int start = 0, int step = 1) {
 	std::vector<int> l;
 	for (int i = start; i < limit; i += step)
 		l.push_back(i);
-	return choice(l);
+	return random.choice(l);
 };
 #else
 int randInRange(int limit, int start = 0, int step = 1) {
 	std::vector<int> l;
 	for (int i = start; i < limit; i += step)
 		l.push_back(i);
-	return choice(l);
+	return random.choice(l);
 };
 #endif
 #endif
 
-#if defined(import_randrange)
+#if defined(import_randrange) or defined(import_rand_range) or defined(import_randRange)
 #if !defined(Random_Capitalize)
 std::vector<int> randrange(int limit, int begin, int end) {
 	std::vector<int> l;
 	for (int i = 0; i < limit; i++)
-		l.push_back(randint(begin, end));
+		l.push_back(random.randint(begin, end));
 	return l;
 };
 #else
 std::vector<int> randRange(int limit, int begin, int end) {
 	std::vector<int> l;
 	for (int i = 0; i < limit; i++)
-		l.push_back(randint(begin, end));
+		l.push_back(random.randInt(begin, end));
 	return l;
 };
 #endif
