@@ -25,9 +25,9 @@ struct {
 	const char randletter() { return char(randbool() ? randint(65, 91) : randint(97,123)); };
 	const char randsymbol() { return char( randbool() ? randint(33, 48) : randbool() ? randint(58, 65) : randbool() ? randint(91, 97) : randint(123, 127) ); };
 
-	float randfloat() {
+	float randfloat(int precision = 11) {
 		float t = 0.f;
-		for (int i = 0; i < 11; i++) {
+		for (int i = 0; i < precision; i++) {
 			t += float(rand() % 10) / pow(10, i + 1);
 		};
 		return t;
@@ -68,9 +68,9 @@ struct {
 	const char randLetter() { return char(randBool() ? randInt(65, 91) : randInt(97, 123)); };
 	const char randSymbol() { return char(randBool() ? randInt(33, 48) : randBool() ? randInt(58, 65) : randBool() ? randInt(91, 97) : randInt(123, 127)); };
 
-	float randFloat() {
+	float randFloat(int precision = 11) {
 		float t = 0.f;
-		for (int i = 0; i < 11; i++) {
+		for (int i = 0; i < precision; i++) {
 			t += float(rand() % 10) / pow(10, i+1);
 		};
 		return t;
@@ -163,17 +163,17 @@ char randSymbol() { return char(random.randBool() ? random.randInt(33, 48) : ran
 
 #if defined(import_randfloat) or defined(import_rand_float) or defined(import_randFloat)
 #if !defined(Random_Capitalize)
-float randfloat() {
+float randfloat(int precision = 11) {
 	float t = 0.f;
-	for (int i = 0; i < 11; i++) {
+	for (int i = 0; i < precision; i++) {
 		t += float(rand() % 10) / pow(10, i + 1);
 	};
 	return t;
 };
 #else
-float randFloat() {
+float randFloat(int precision = 11) {
 	float t = 0.f;
-	for (int i = 0; i < 11; i++) {
+	for (int i = 0; i < precision; i++) {
 		t += float(rand() % 10) / pow(10, i + 1);
 	};
 	return t;
