@@ -104,7 +104,7 @@ T choice(std::vector<T> v) {
 #if !defined(Random_Capitalize)
 bool randbool() { return std::rand() % 2 == 0 ? false : true; };
 #else
-bool randbool() { return std::rand() % 2 == 0 ? false : true; };
+bool randBool() { return std::rand() % 2 == 0 ? false : true; };
 #endif
 #endif
 
@@ -112,7 +112,7 @@ bool randbool() { return std::rand() % 2 == 0 ? false : true; };
 #if !defined(Random_Capitalize)
 char randchar() { return char(std::rand() % 256 - 128); };
 #else
-char randchar() { return char(std::rand() % 256 - 128); };
+char randChar() { return char(std::rand() % 256 - 128); };
 #endif
 #endif
 
@@ -120,7 +120,7 @@ char randchar() { return char(std::rand() % 256 - 128); };
 #if !defined(Random_Capitalize)
 char randletter() { return char(randbool() ? randint(65, 91) : randint(97, 123)); };
 #else
-char randletter() { return char(randbool() ? randint(65, 91) : randint(97, 123)); };
+char randLetter() { return char(randbool() ? randint(65, 91) : randint(97, 123)); };
 #endif
 #endif
 
@@ -128,7 +128,7 @@ char randletter() { return char(randbool() ? randint(65, 91) : randint(97, 123))
 #if !defined(Random_Capitalize)
 char randsymbol() { return char(randbool() ? randint(33, 48) : randbool() ? randint(58, 65) : randbool() ? randint(91, 97) : randint(123, 127)); };
 #else
-char randsymbol() { return char(randbool() ? randint(33, 48) : randbool() ? randint(58, 65) : randbool() ? randint(91, 97) : randint(123, 127)); };
+char randSymbol() { return char(randbool() ? randint(33, 48) : randbool() ? randint(58, 65) : randbool() ? randint(91, 97) : randint(123, 127)); };
 #endif
 #endif
 
@@ -141,7 +141,7 @@ int randinrange(int limit, int start = 0, int step = 1) {
 	return choice(l);
 };
 #else
-int randinrange(int limit, int start = 0, int step = 1) {
+int randInRange(int limit, int start = 0, int step = 1) {
 	std::vector<int> l;
 	for (int i = start; i < limit; i += step)
 		l.push_back(i);
@@ -159,7 +159,7 @@ std::vector<int> randrange(int limit, int begin, int end) {
 	return l;
 };
 #else
-std::vector<int> randrange(int limit, int begin, int end) {
+std::vector<int> randRange(int limit, int begin, int end) {
 	std::vector<int> l;
 	for (int i = 0; i < limit; i++)
 		l.push_back(randint(begin, end));
