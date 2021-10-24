@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include <vector>
 
-#if defined(import_rand_all)
+#if defined(import_randall) or defined(import_rand_all) or defined(import_randAll)
 #define import_randint
 #define import_randbool
 #define import_randchar
@@ -115,7 +115,7 @@ int randInt() { return std::rand() % INT_MAX; };
 #endif
 #endif
 
-#if defined(import_choice)
+#if defined(import_randchoice) or defined(import_rand_choice) or defined(import_randChoice)
 template <typename T>
 T choice(std::initializer_list<T> v) {
 	std::vector<T> l = v;
