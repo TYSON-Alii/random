@@ -2,16 +2,16 @@
 Python random library for c++
 
 ```cpp
+#define _CRT_NO_SECURE_WARNINGS
 #include <iostream>
-#define import_randInt
+#define Random_Capitalize
 //#define import_rand_all
 #include "random.hpp"
 
 using namespace std;
-
 int main() {
-	cout << randfloat() << '\n';
-	cout << randint(5, 10) << '\n';
-	cout << random.choice({9,3,54,8}) << '\n';
+	cout << randFloat() << '\n';
+	cout << randInt(5, 10) << '\n';
+	cout << choice({"elma","armut","cilek"}) << '\n';
 };
 ```
