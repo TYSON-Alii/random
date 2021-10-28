@@ -2,7 +2,6 @@
 Python random library for c++
 
 ```cpp
-#define _CRT_NO_SECURE_WARNINGS
 #include <iostream>
 #define Random_Capitalize
 //#define import_rand_all
