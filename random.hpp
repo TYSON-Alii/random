@@ -1,6 +1,8 @@
 #include <stdlib.h>
 #include <vector>
 
+#define _XS_RANDOM_
+
 #if defined(import_randall) or defined(import_rand_all) or defined(import_randAll)
 #define import_randint
 #define import_randbool
