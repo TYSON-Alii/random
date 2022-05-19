@@ -3,14 +3,22 @@ Python random library for c++
 
 ```cpp
 #include <iostream>
-#define Random_Capitalize
-//#define import_rand_all
 #include "random.hpp"
 
-using namespace std;
 int main() {
-	cout << randFloat() << '\n';
-	cout << randInt(5, 10) << '\n';
-	cout << choice({"elma","armut","cilek"}) << '\n';
+	auto& r = random; // aliasing
+	r.randInt(5, 10);
+	random.randFloat();
+	if (random.randBool())
+		cout << random.rand<unsigned long long>(50) << '\n';
+	random.choice({9,3,54,8});
+	random.choice({"elma", "armut", "cilek", "yarak"});
+	string falanke = "filanke";
+	random.choice(falanke);
+	// or random.choice("filanke"s);
+	random.randRange(50, 10);
+	cout << random.randChar() << '\n';
+	cout << random.randLetter() << '\n';
+	cout << random.randSymbol() << '\n';
 };
 ```
